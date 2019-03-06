@@ -1,14 +1,14 @@
 const request = require('request')
 const requestHeaders = require('./request-headers')
 
-module.exports = function tripsQuery (from, to) {
+module.exports = function tripsQuery (params) {
   return function (token, cb) {
     const tripsQueryData = {
       'documentLanguage': 'DE',
       'originType': 'STATION',
-      'originUicOrId': from,
+      'originUicOrId': params.from,
       'destinationType': 'STATION',
-      'destinationUicOrId': to,
+      'destinationUicOrId': params.to,
       'stopBehaviour': 'ORIGIN_DESTINATION_ONLY',
       'products': [
         'ICE_EN_CNL_CIS_ES_MET_NZ_PEN_TGV_THA_X2',

@@ -1,12 +1,12 @@
 const request = require('request')
 const requestHeaders = require('./request-headers')
 
-module.exports = function stationsQuery (query) {
+module.exports = function stationsQuery (params) {
   return function (token, cb) {
     const stationQueryData = {
       'documentLanguage': 'DE',
       'limit': 10,
-      'nameMatchOrRefinableLink': query,
+      'nameMatchOrRefinableLink': params.query,
       'type': 'ALL'
     }
 
