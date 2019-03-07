@@ -6,7 +6,7 @@ module.exports = function stationsQuery (req, res, next) {
     'documentLanguage': 'DE',
     'limit': 10,
     'nameMatchOrRefinableLink': req.params.query,
-    'type': 'ALL'
+    'type': 'STATION'
   }
 
   request.post(
@@ -18,7 +18,12 @@ module.exports = function stationsQuery (req, res, next) {
     (err, response) => {
       if (err) return next(err)
       res.json({
-        locations: response.body.locations
+        locations: response.body.locations.map((location) => {
+          return {
+            name: location.name,
+            uic: location.uic
+          }
+        })
       })
     }
   )

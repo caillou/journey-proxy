@@ -32,7 +32,28 @@ module.exports = function tripsQuery (req, res, next) {
     (err, response) => {
       if (err) return next(err)
 
-      res.json(response.body)
+      res.json({
+        trips: response.body.trips.map(getSimplifiedTrip)
+      })
     }
   )
+}
+
+function getSimplifiedTrip (trip) {
+  const firstStop = trip.legs[0].stops[0]
+  const lastLeg = trip.legs[trip.legs.length - 1]
+  const lastStop = lastLeg.stops[lastLeg.stops.length - 1]
+
+  const from = {
+    name: firstStop.name,
+    time: firstStop.departureDateTime
+  }
+  const to = {
+    name: lastStop.name,
+    time: lastStop.arrivalDateTime
+  }
+  return {
+    from: from,
+    to: to
+  }
 }
