@@ -1,6 +1,7 @@
 const app = require('express')()
 
 app.use(require('./middleware/journey-token'))
+app.use(require('cors')())
 
 app.get(
   '/station-search/:query',
