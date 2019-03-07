@@ -15,7 +15,7 @@ Then run the following commands:
 
 ```
 npm install
-PORT=8080 node index.js
+PORT=8080 npm start
 ```
 
 Then you can test the API as follows:
