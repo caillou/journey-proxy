@@ -46,11 +46,13 @@ function getSimplifiedTrip (trip) {
 
   const from = {
     name: firstStop.name,
-    time: firstStop.departureDateTime
+    time: firstStop.departureDateTime,
+    track: firstStop.departureTrack
   }
   const to = {
     name: lastStop.name,
-    time: lastStop.arrivalDateTime
+    time: lastStop.arrivalDateTime,
+    track: lastStop.arrivalTrack
   }
   return {
     from: from,
