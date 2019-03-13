@@ -32,9 +32,15 @@ module.exports = function tripsQuery (req, res, next) {
     (err, response) => {
       if (err) return next(err)
 
-      res.json({
-        trips: response.body.trips.map(getSimplifiedTrip)
-      })
+      try {
+        return res.json({
+          trips: response.body.trips.map(getSimplifiedTrip)
+        })
+      } catch (e) {
+
+      }
+
+      return res.json({ trips: [] })
     }
   )
 }
