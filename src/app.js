@@ -13,4 +13,9 @@ app.get(
   require('./controllers/trips-query')
 )
 
+app.get('/demo', function (req, res) {
+  res.json({hello: 'retro'})
+})
+
+
 module.exports = app
